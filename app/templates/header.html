@@ -1,0 +1,60 @@
+<DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{pageInfo.titleTag}}</title>
+        <meta name="description" content={{pageInfo.description}} />
+        <meta name="robots" content="All" />
+        <meta name="copyright" content="fulferlawoffice.com" />
+        <meta name="author" content="fulferlawoffice.com" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="google-site-verification" content="tyNdLQ2-2OfFaMmup7w9NjNiTqeo50TD0vwM3J8MiI0" />
+        <meta property="og:title" content={{pageInfo.titleTag}}/>
+        <meta property="og:description" content={{pageInfo.description}}/>
+        <meta property="og:type" content="article"/>
+        <meta property="fb:admins" content=""/>
+        <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+        <link href="/css/less.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+    </head>
+    <script type="text/javascript">
+      var SITE_PATH = '{{SITE_PATH}}';
+    </script>
+    <body>
+        <!-- navigation menu -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed-top" id="navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarContent">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbarContent">
+                        <ul class="nav navbar-nav navbar-right">
+                          {% for m in menu if (m.menuSide == 'X' or m.menuSide == 'T') %}
+                            {% if m.route=='OrderEventPhotos' %}
+                            <li><a href="http://vando.imagequix.com/galleries.html?id=59Y7E92" class="anchorLink">Order Event Photos</a></li>
+                            {% elseif m.submenu|length %}
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{m.name}} <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                              {% for s in m.submenu %}
+                              <li><a href="/{{s.route}}">{{s.name}}</a></li>
+                              {% endfor %}
+                              </ul>
+                            </li>
+                            {% elseif m.hidden==0 %}
+                            <li><a href="/{{m.route}}">{{m.name}}</a></li>
+                            {% endif %}
+
+                          {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
